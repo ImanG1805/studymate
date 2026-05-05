@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyMate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <h2>📚 StudyMate</h2>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#tasks">Tasks</a></li>
+  </ul>
+</nav>
+
+<main>
+    <div class="hero-image"></div>
+<h1>Study Planner Dashboard</h1>
+<section id="auth">
+  <h2>Login</h2>
+
+  <input type="text" id="loginName" placeholder="Name">
+  <input type="email" id="loginEmail" placeholder="Email">
+  <input type="password" id="loginPassword" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <p id="loginStatus"></p>
+</section>
+
+<hr>
+
+<section id="subjects">
+  <h2>Subjects</h2>
+
+  <input type="text" id="subjectInput" placeholder="Enter subject">
+  <button onclick="addSubject()">Add</button>
+
+  <div id="subjectList"></div>
+</section>
+
+<hr>
+
+
+<section id="tasks">
+  <h2>Tasks</h2>
+
+  <input type="text" id="taskInput" placeholder="Task title">
+  <input type="date" id="dateInput">
+
+  <select id="subjectSelect"></select>
+
+  <button onclick="addTask()">Add Task</button>
+
+  <br><br>
+
+  <input type="text" id="searchInput" placeholder="Search tasks..." oninput="renderTasks()">
+
+  <br><br>
+
+  <button onclick="filter='all'; renderTasks()">All</button>
+  <button onclick="filter='done'; renderTasks()">Done</button>
+  <button onclick="filter='pending'; renderTasks()">Pending</button>
+
+  <div id="taskList"></div>
+</section>
+
+</main>
+
+<footer>
+  <p> 2026 StudyMate</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
