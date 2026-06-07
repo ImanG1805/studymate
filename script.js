@@ -102,7 +102,7 @@ function renderTasks() {
     const today = new Date().toISOString().split("T")[0];
 
     let statusText = "⏳ Pending";
-    if (t.done) statusText = "✅ Done";
+    if (t.done) statusText = " Done";
     else if (t.due_date && t.due_date < today) statusText = "❌ Overdue";
 
     div.innerHTML = `

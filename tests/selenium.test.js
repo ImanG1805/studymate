@@ -13,7 +13,6 @@ await driver.get(
 );
 
 
-// TEST 1
 await driver.wait(
 until.elementLocated(By.id("loginName")),
 5000
@@ -22,7 +21,7 @@ until.elementLocated(By.id("loginName")),
 console.log("TEST 1 PASSED - Application opens");
 
 
-// TEST 2 LOGIN
+
 
 await driver.findElement(By.id("loginName"))
 .sendKeys("Iman");
@@ -40,7 +39,6 @@ By.xpath("//button[contains(text(),'Login')]")
 console.log("TEST 2 PASSED - User login works");
 
 
-// TEST 3 SUBJECT
 
 await driver.sleep(1000);
 
@@ -54,7 +52,6 @@ By.xpath("//button[contains(text(),'Add')]")
 console.log("TEST 3 PASSED - Subject creation works");
 
 
-// TEST 4 TASK
 
 await driver.sleep(1000);
 
@@ -71,7 +68,6 @@ By.xpath("//button[contains(text(),'Add Task')]")
 console.log("TEST 4 PASSED - Task creation works");
 
 
-// TEST 5 SEARCH
 
 await driver.sleep(1000);
 

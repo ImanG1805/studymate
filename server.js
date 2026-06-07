@@ -12,13 +12,12 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-// TEST ROUTE
 app.get("/", (req,res)=>{
     res.send("StudyMate API radi!");
 });
 
 
-// TASK ROUTES
+
 
 app.get("/tasks", taskController.getTasks);
 
@@ -29,14 +28,12 @@ app.delete("/tasks/:id", taskController.deleteTask);
 app.put("/tasks/:id", taskController.updateTask);
 
 
-// SUBJECT ROUTES
 
 app.get("/subjects", subjectController.getSubjects);
 
 app.post("/subjects", subjectController.createSubject);
 
 
-// USER ROUTES
 
 app.post("/login", userController.login);
 
@@ -44,10 +41,12 @@ app.get("/users", userController.getUsers);
 
 
 
-// START SERVER
 
-app.listen(3000, ()=>{
+const PORT = process.env.PORT || 3000;
 
-console.log("Server running on port 3000");
+app.listen(PORT, ()=>{
+
+console.log("Server running on port " + PORT);
 
 });
+
