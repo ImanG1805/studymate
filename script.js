@@ -1,7 +1,7 @@
-const TASK_API = "https://studymate-api-hqrl.onrender.com/tasks";
-const SUBJECT_API = "https://studymate-api-hqrl.onrender.com/subjects";
+const TASK_API = "https://studymate-api-nqrl.onrender.com/tasks";
+const SUBJECT_API = "https://studymate-api-nqrl.onrender.com/subjects";
 
-let tasks = [];
+let tasks = []
 let subjects = [];
 let filter = "all";
 let currentUser = null;
@@ -28,7 +28,7 @@ async function login() {
     return;
   }
 
-  const res = await fetch"https://studymate-api-hqrl.onrender.com/login"", {
+  const res = await fetch"https://studymate-api-nqrl.onrender.com/login", {
     method: "POST",
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify({ name, email, password })
