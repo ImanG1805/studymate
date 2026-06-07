@@ -1,5 +1,5 @@
-const TASK_API = "http://localhost:3000/tasks";
-const SUBJECT_API = "http://localhost:3000/subjects";
+const TASK_API = "https://studymate-api-hqrl.onrender.com/tasks";
+const SUBJECT_API = "https://studymate-api-hqrl.onrender.com/subjects";
 
 let tasks = [];
 let subjects = [];
@@ -28,7 +28,7 @@ async function login() {
     return;
   }
 
-  const res = await fetch("http://localhost:3000/login", {
+  const res = await fetch"https://studymate-api-hqrl.onrender.com/login"", {
     method: "POST",
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify({ name, email, password })
