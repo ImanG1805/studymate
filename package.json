@@ -1,7 +1,16 @@
 {
+  "scripts": {
+    "start": "node server.js",
+    "selenium-test": "node tests/selenium.test.js"
+  },
+
   "dependencies": {
     "body-parser": "^2.2.2",
     "cors": "^2.8.6",
     "express": "^5.2.1"
+  },
+
+  "devDependencies": {
+    "selenium-webdriver": "^4.0.0"
   }
 }

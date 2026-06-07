@@ -2,100 +2,52 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const taskController = require("./controllers/taskController");
+const subjectController = require("./controllers/subjectController");
+const userController = require("./controllers/userController");
+
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
 
-// TEST
-app.get("/", (req, res) => {
-  res.send("StudyMate API radi!");
+
+// TEST ROUTE
+app.get("/", (req,res)=>{
+    res.send("StudyMate API radi!");
 });
 
 
-let tasks = [];
-let id = 1;
+// TASK ROUTES
 
-app.get("/tasks", (req, res) => {
-  res.send(tasks);
-});
+app.get("/tasks", taskController.getTasks);
 
-app.post("/tasks", (req, res) => {
-  const task = {
-    id: id++,
-    title: req.body.title,
-    due_date: req.body.due_date,
-    subject_id: req.body.subject_id,
-    user_id: req.body.user_id, 
-    done: false
-  };
+app.post("/tasks", taskController.createTask);
 
-  tasks.push(task);
-  res.send(task);
-});
+app.delete("/tasks/:id", taskController.deleteTask);
+
+app.put("/tasks/:id", taskController.updateTask);
 
 
-let subjects = [];
-let subjectId = 1;
+// SUBJECT ROUTES
 
-app.get("/subjects", (req, res) => {
-  res.send(subjects);
-});
+app.get("/subjects", subjectController.getSubjects);
 
-app.post("/subjects", (req, res) => {
-  const subject = {
-    id: subjectId++,
-    name: req.body.name
-  };
-
-  subjects.push(subject);
-  res.send(subject);
-});
+app.post("/subjects", subjectController.createSubject);
 
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
+// USER ROUTES
 
-app.delete("/tasks/:id", (req, res) => {
-  const taskId = parseInt(req.params.id);
-  tasks = tasks.filter(t => t.id !== taskId);
-  res.send("Deleted");
-});
+app.post("/login", userController.login);
+
+app.get("/users", userController.getUsers);
 
 
-app.put("/tasks/:id", (req, res) => {
-  const taskId = parseInt(req.params.id);
-  const task = tasks.find(t => t.id === taskId);
 
-  if (task) {
-    task.done = !task.done;
-    res.send(task);
-  } else {
-    res.status(404).send("Not found");
-  }
-});
-let users = [];
-let userId = 1;
+// START SERVER
 
+app.listen(3000, ()=>{
 
-app.post("/login", (req, res) => {
-  const { name, email, password } = req.body;
+console.log("Server running on port 3000");
 
-  let user = users.find(u => u.email === email);
-
-  if (!user) {
-    
-    user = {
-      id: userId++,
-      name,
-      email,
-      password
-    };
-    users.push(user);
-  }
-
-  res.send(user);
-});
-app.get("/users", (req, res) => {
-  res.send(users);
 });
